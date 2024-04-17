@@ -1,0 +1,50 @@
+.logoImage{
+  padding: 7px;  
+  height: auto;
+}
+
+.settingicons{
+  padding-top: 7px;
+  /* gap: 50px; */
+  /* padding-left: 920px; */
+  color: #2979ff;   
+}
+
+.container{
+  position: fixed;
+  display: flex;
+  /* justify-content:space-between;  */
+  line-height: 70px;
+}
+
+.credit{
+  font-size: 18px;
+  float: left;
+  background-color: #f8f9fa !important;
+  padding-right: .5rem !important;
+  padding-left: .5rem !important;
+}
+
+.digit{
+  background-color: #212529 !important;
+  color: #fff !important;
+  padding-right: .5rem !important;
+  padding-left: .5rem !important;
+}
+
+.plus{
+  padding-left: .1rem !important;
+  color: #0d6efd !important;
+  background-color: #d9dadd !important;
+  align-items: center;
+}
+
+.threeline{
+  color: #0d6efd !important;
+  padding: 9px;
+}
+
+.align{
+  display: flex;
+  gap: 930px;
+}

@@ -1,0 +1,159 @@
+<div class="content-page">
+	<!-- Page Content Start -->
+	<div class="content">
+	<!-- Start Content-->
+		<div class="container-fluid">
+			<div class="row mt-3 mb-3">
+						<div class="col-sm-12">
+	<h3 class="text-adblue">Contact List</h3>
+	<hr>
+</div>
+<div class="col-sm-12">
+	<div class="card">
+		<div class="card-body">	
+			<div class="row">
+				<div class="col-sm-12">
+					<button class="btn btn-primary btn-sm float-end  ms-2" data-bs-toggle="modal" data-bs-target="#add-contact-list"><i class="fas fa-plus"></i>&nbsp;&nbsp;<strong>Add Contact List</strong></button>
+					<a class="btn btn-sm bg-candy_apple text-white float-end" data-bs-toggle="modal" data-bs-target="#bulk-upload-form"><i class="fas fa-plus"></i>&nbsp;&nbsp;<strong>Bulk Upload Emails</strong></a>
+				</div>
+				<div class="col-sm-12 mt-3">
+					<div class="table-responsive">
+						<table class="table table-hover table-bordered datatable" id="contactList">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Deliverables</th>
+									<th>Role Base</th>
+									<th>Disposable</th>
+									<th>Spam Trap</th>
+									<th>Bad Emails</th>
+									<th>Pending</th>
+									<th>Total</th>
+								</tr>
+							</thead>
+										
+							<tbody>
+								<tr>
+									<td>Default<br>
+									<a class="text-decoration-none" href="http://192.168.0.100/ratifymail/contact-list/?action=edit&amp;contactListID=9" data-toggle="tooltip" title="" data-original-title="Edit Contact Name"><i class="fas fa-edit text-lavender_gray"></i></a>&nbsp;&nbsp;
+									<a class="text-decoration-none" href="http://192.168.0.100/ratifymail/contact/?action=contactList&amp;contactListID=9" data-toggle="tooltip" title="" data-original-title="View Contacts List"><i class="fas fa-list"></i></a>&nbsp;&nbsp;
+									<a class="text-decoration-none" href="#" data-toggle="tooltip" title="" data-original-title="Export"><i class="far fa-file-excel text-success"></i></a>&nbsp;&nbsp;
+									<a class="text-decoration-none statistics" href="http://192.168.0.100/ratifymail/ajaxlib/listStatistics.php?contactListID=9" data-bs-toggle="modal" data-bs-target="#status" title="Statistics"><i class="far fa-chart-bar text-candy_apple"></i></a>
+									</td>
+									<td>0</td>
+									<td>0</td>	
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+							</tbody>
+															</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!----file to Upload Modal---->
+<div class="modal fade" id="bulk-upload-form" tabindex="-1" aria-labelledby="bulk-upload-form" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+	<div class="modal-header">
+		<h5 class="text-center">Select a file to Upload! </h5>
+		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	</div>	
+	<div class="modal-body m-3">
+		<p class="samlltext">Select a .TXT or .CSV file containing your emails.</p>
+		<p class="samlltext">TIP: The order of emails at the report will be the same as your uploaded list.</p>
+		<p class="samlltext">Help: Sample CSV File <a href="http://192.168.0.100/ratifymail/upload/samplelist.csv" target="_blank">create acceptable files</a> for uploading</p>
+		<form role="form" class="form-horizontal needs-validation contactListSave" id="contactListSave" name="contactListSave" action="http://192.168.0.100/ratifymail/ajaxlib/contactListSave.php" method="post" enctype="multipart/form-data" novalidate="">
+			<div class="col-sm-12 mb-2">
+				<label class="form-text">Select Contact List</label>
+				<select class="form-select" id="contactListID" name="contactListID" required="">
+					<option value="9">Default</option>						</select>
+			</div>
+			<div class="col-sm-12 mt-2 mb-2">
+				<label class="form-text">Select File</label>
+				<input class="form-control" accept=".csv, text/plain" type="file" name="emaillist" id="emaillist" required="">
+			</div>
+			<div class="col-sm-12">
+				<input name="companyID" type="hidden" value="8">
+				<input name="action" type="hidden" value="uploadList">
+				<button type="submit" class="btn btn-primary btn-sm">Submit</button>&nbsp;<span class="smallTest text-danger">* Maximum Allowed Emails per File: 1K.</span>
+			</div>
+		</form>
+	</div>
+</div>
+</div>
+</div>
+
+<!----Add Contact List Modal---->
+<div class="modal fade" id="add-contact-list" tabindex="-1" aria-labelledby="add-contact-list" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+	<div class="modal-header">
+		<h5 class="text-center">Add Contact List </h5>
+		<button href="http://192.168.0.100/ratifymail/contact-list/" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	</div>	
+	<div class="modal-body">
+		<div class="col-sm-12">
+			<form role="form" class="form-horizontal needs-validation contactListSave" name="contactListSave" action="http://192.168.0.100/ratifymail/ajaxlib/contactListSave.php" method="post" enctype="multipart/form-data" novalidate="">
+				<div class="row">
+					<div class="col-sm-12 mb-3">
+						<label class="mb-2">Contact List Title<span class="text-danger">*</span></label>
+						<input type="text" class="form-control form-control-sm" id="contactListTitle" name="contactListTitle" required="">
+						<div class="invalid-feedback">Contact List Title can not be empty.</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 mb-3">
+						<input name="companyID" type="hidden" value="8">
+						<input name="action" type="hidden" value="save">
+						<button type="submit" class="btn btn-primary btn-sm">Submit</button>
+						<a href="http://192.168.0.100/ratifymail/contact-list/" class="btn btn-danger btn-sm">Cancel</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+
+<!----Statistics Modal---->
+<div class="modal fade" id="status" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+	<div class="modal-header">
+		<h5 class="modal-title" id="status">List Statistics</h5>
+		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	</div>	
+	<div class="modal-body list-statistics"></div>
+</div>
+</div>
+</div>
+			</div>
+		</div>
+	<!-- End Content-->
+	</div>
+	<!-- Page Content End -->
+	<!-- Footer Start -->
+	<footer class="footer">
+<div class="container-fluid">
+<div class="row">
+	<div class="col-md-6">
+		2024© <span class="ratify">ratify</span><span class="mail">Mail</span>
+	</div>
+	<div class="col-md-6">
+		<div class="text-md-right footer-links d-none d-sm-block float-end">
+			<a href="http://192.168.0.100/ratifymail/privacy-policy">Privacy Policy</a>
+			<a href="https://www.adaptable.pro/contact-us/">Contact Us</a>
+		</div>
+	</div>
+</div>
+</div>
+</footer>
+	<!-- end Footer -->
+</div>

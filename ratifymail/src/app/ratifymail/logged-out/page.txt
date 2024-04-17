@@ -1,0 +1,9 @@
+const ratifymail = () => {
+    return(
+      <div>
+        ratify mail home page
+      </div>
+    )
+  }
+  
+  export default ratifymail
